@@ -10,7 +10,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\src\ListEx.fsproj" />
+    <ProjectReference Include="..\src\FSharp.ListEx.fsproj" />
   </ItemGroup>
 
 </Project>

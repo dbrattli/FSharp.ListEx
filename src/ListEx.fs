@@ -18,10 +18,10 @@ module List =
     let ofCSharpList = ofResizeArray
 
 [<AutoOpen>]
-module Extensions =
+module ListExtensions =
     /// Convert C# List to F# List
     type System.Collections.Generic.List<'T> with
-        member inline this.ToList () : List<'T> =
+        member inline this.ToFSharpList () : List<'T> =
             Seq.toList this
 
 #if !FABLE_COMPILER

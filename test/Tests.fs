@@ -13,7 +13,7 @@ let main argv =
 
     // Assert
     assert (fsList = csList.ToFSharpList ())
-    assert (fsList = csList.ToList ())
+    assert (fsList = (csList :> IEnumerable<_>).ToFSharpList ())
     assert (fsList = List.ofResizeArray csList)
     assert (fsList = List.ofCSharpList csList)
 
@@ -22,8 +22,9 @@ let main argv =
 
     // Assert
     assert (fsList = csList.ToFSharpList ())
-    assert (fsList = csList.ToList ())
+    assert (fsList = (csList :> IEnumerable<_>).ToFSharpList ())
     assert (fsList = List.ofResizeArray csList)
     assert (fsList = List.ofCSharpList csList)
 
+    printfn "All tests passed!"
     0 // return an integer exit code
