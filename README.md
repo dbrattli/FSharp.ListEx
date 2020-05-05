@@ -10,16 +10,18 @@ open FSharp.ListEx
 
 let fsList = [1; 2; 3]
 
-// Convert F# List to C# List
+// Convert F# List to C# List. This is the same as: `ResizeArray xs`
 let csList = List.toResizeArray fsList
 let csList = List.toCSharpList fsList // Alias for List.toResizeArray
 
- // Convert C# List to F# List
-fsList = csList.ToFSharpList () // Extension method
-fsList = List.ofResizeArray csList // List module
-fsList = List.ofCSharpList csList // Alias for List.ofResizeArray
+// Convert C# List to F# List. This is the same as: `List.ofSeq xs`
+fsList = List.ofResizeArray csList    // List module
+fsList = List.ofCSharpList csList     // Alias for List.ofResizeArray
 
-// Convert IEnumerable to F# List (can be used from C#)
+// Convert C# List to F# List. This is the same as: `Seq.toList xs`
+fsList = csList.ToFSharpList ()       // Extension method
+
+// Convert IEnumerable to F# List (can be used from C#). This is the same as: `ListModule.OfSeq(xs);`
 let xs = csList :> IEnumerable<_>
-fsList = xs.ToFSharpList () // Extension method
+fsList = xs.ToFSharpList ()           // Extension method
 ```

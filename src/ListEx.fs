@@ -3,23 +3,23 @@
 [<CompilationRepresentation(CompilationRepresentationFlags.ModuleSuffix)>]
 [<RequireQualifiedAccess>]
 module List =
-    /// Convert F# List to C# List
+    /// Convert F# List to C# List. This is the same as: `ResizeArray xs`
     let inline toResizeArray (xs: List<_>) =
         ResizeArray xs
 
-    /// Alias for List.toResizeArray
+    /// Alias for List.toResizeArray. This is the same as: `ResizeArray xs`
     let toCSharpList = toResizeArray
 
-    /// Convert C# List to F# List
+    /// Convert C# List to F# List. This is the same as: `List.ofSeq xs`
     let inline ofResizeArray xs =
         List.ofSeq xs
 
-    /// Alias for List.ofResizeArray
+    /// Alias for List.ofResizeArray. This is the same as: `List.ofSeq xs`
     let ofCSharpList = ofResizeArray
 
 [<AutoOpen>]
 module ListExtensions =
-    /// Convert C# List to F# List
+    /// Convert C# List to F# List. This is the same as: `Seq.toList xs`
     type System.Collections.Generic.List<'T> with
         member inline this.ToFSharpList () : List<'T> =
             Seq.toList this
@@ -31,7 +31,7 @@ open System.Collections.Generic
 type IEnumerableExtensions =
     [<Extension>]
     /// <summary>
-    /// Convert IEnumerable to F# List.
+    /// Convert IEnumerable to F# List. This is the same as: `ListModule.OfSeq(xs);`
     /// </summary>
     /// <param name="xs">IEnumerable to convert to F# List</param>
     /// <typeparam name="'T">Type of enumerable item.</typeparam>
