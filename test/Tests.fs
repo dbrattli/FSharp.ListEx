@@ -15,7 +15,7 @@ let main argv =
     assert (fsList = csList.ToFSharpList ())
     assert (fsList = (csList :> IEnumerable<_>).ToFSharpList ())
     assert (fsList = List.ofResizeArray csList)
-    assert (fsList = List.ofCSharpList csList)
+    assert (fsList = List.ofEnumerable csList)
 
     // Act
     let csList = List.toCSharpList fsList
@@ -24,7 +24,7 @@ let main argv =
     assert (fsList = csList.ToFSharpList ())
     assert (fsList = (csList :> IEnumerable<_>).ToFSharpList ())
     assert (fsList = List.ofResizeArray csList)
-    assert (fsList = List.ofCSharpList csList)
+    assert (fsList = List.ofEnumerable csList)
 
     // Arrange
     let fsMap = Map [("a", 10); ("b", 20) ]

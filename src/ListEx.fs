@@ -1,5 +1,7 @@
 ﻿namespace FSharp.ListEx
 
+open System
+
 [<CompilationRepresentation(CompilationRepresentationFlags.ModuleSuffix)>]
 [<RequireQualifiedAccess>]
 module List =
@@ -14,8 +16,14 @@ module List =
     let inline ofResizeArray xs =
         List.ofSeq xs
 
-    /// Alias for List.ofResizeArray. This is the same as: `List.ofSeq xs`
-    let ofCSharpList = ofResizeArray
+    /// Convert IEnumerable to F# List. This is the same as: `List.ofSeq xs`
+    let inline ofEnumerable xs = List.ofSeq xs
+
+    [<Obsolete("This function is deprecated. Use List.ofEnumerable instead")>]
+    let ofCSharpList xs = ofResizeArray xs
+
+    /// Hides the identity of the List.
+    let inline asEnumerable (xs: List<'T>) = Seq.ofList xs
 
 [<AutoOpen>]
 module ListExtensions =

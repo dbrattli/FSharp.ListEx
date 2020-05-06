@@ -18,7 +18,7 @@ let csList = List.toCSharpList fsList     // Alias for List.toResizeArray (FShar
 // Convert C# List to F# List.
 let fsList = List.ofSeq xs                // Without FSharp.ListEx
 let fsList = List.ofResizeArray csList    // F# List module (FSharp.ListEx)
-let fsList = List.ofCSharpList csList     // Alias for List.ofResizeArray (FSharp.ListEx)
+let fsList = List.ofEnumerable csList     // Alias for List.ofResizeArray (FSharp.ListEx)
 
 // Convert C# List to F# List.
 let fsList = Seq.toList csList            // Without FSharp.ListEx
@@ -29,4 +29,16 @@ let fsList = ListModule.OfSeq(xs)         // Without FSharp.ListEx
 
 let xs = csList :> IEnumerable<_>
 let fsList = xs.ToFSharpList ()           // IEnumerable extension method (FSharp.ListEx)
+```
+
+## Map (bonus)
+
+```fs
+let fsMap = Map [("a", 10); ("b", 20) ]
+
+let csDict = Map.toDictionary fsMap
+let csIDict = Map.toIDictionary fsMap
+
+let fsMap = Map.ofDictionary csDict
+let fsMap = Map.ofDictionary csIDict
 ```
