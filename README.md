@@ -36,9 +36,11 @@ let fsList = xs.ToFSharpList ()           // IEnumerable extension method (FShar
 ```fs
 let fsMap = Map [("a", 10); ("b", 20) ]
 
+// Convert F# Map to C# Dictionary and IDictionary
 let csDict = Map.toDictionary fsMap
 let csIDict = Map.toIDictionary fsMap
 
+// Convert C# Dictionary and IDictionary to F# Map
 let fsMap = Map.ofDictionary csDict
 let fsMap = Map.ofDictionary csIDict
 ```
